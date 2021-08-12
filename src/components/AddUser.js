@@ -11,8 +11,8 @@ import {
 } from "reactstrap";
 
 export const AddUser = () => {
-  const [name, setName] = useState('');
-  const [userName, setUserName] = useState('')
+  const [height, setHeight] = useState('');
+  const [weight, setWeight] = useState('')
   const { addUser } = useContext(GlobalContext);
   // const { addUserName } = useContext(GlobalContext)
   const history = useHistory();
@@ -21,27 +21,30 @@ export const AddUser = () => {
     e.preventDefault();
     const newUser = {
       id: nanoid(),
-      name,
-      userName
+      height,
+      weight
     }
     addUser(newUser);
     // addUserName(newUser);
     history.push("/");
   }
 
-  const onChange = (e) => {
-    setName(e.target.value);
-    setUserName(e.target.value);
+  const onChange1 = (e) => {
+    setHeight(e.target.value);
+  }
+
+  const onChange2 = (e) => {
+    setWeight(e.target.value);
   }
 
   return (
     <Form onSubmit={onSubmit}>
       <FormGroup>
-        <Label>Name</Label>
-        <Input type="text" value={name} onChange={onChange} name="name" placeholder="Enter user" required></Input>
+        <Label>Input Height</Label>
+        <Input type="text" value={height} onChange={onChange1} name="name" placeholder="Height" required></Input>
 
-        <Label>User Name</Label>
-        <Input type="text" value={userName} onChange={onChange} name="name" placeholder="Enter userName" required></Input>
+        <Label>Input Weight</Label>
+        <Input type="text" value={weight} onChange={onChange2} name="name" placeholder="Weight" required></Input>
 
       </FormGroup>
       <Button type="submit">Submit</Button>
